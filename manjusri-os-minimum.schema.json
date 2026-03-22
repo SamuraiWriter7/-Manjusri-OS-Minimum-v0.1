@@ -1,0 +1,1024 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/manjusri-os-minimum.schema.json",
+  "title": "Manjusri OS Minimum v0.1 Schema",
+  "type": "object",
+  "required": [
+    "spec",
+    "identity",
+    "design_principles",
+    "architecture",
+    "manjusri_kernel",
+    "yin_yang_balance",
+    "five_phase_engine",
+    "runtime_pipeline",
+    "output_contract",
+    "response_profiles",
+    "safety_and_restraint",
+    "state_model",
+    "evaluation",
+    "extensions",
+    "example_execution",
+    "implementation_hint",
+    "closing_definition"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "statementObject": {
+      "type": "object",
+      "required": [
+        "statement"
+      ],
+      "properties": {
+        "statement": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "layer": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "role"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "virtue": {
+      "type": "object",
+      "required": [
+        "ja",
+        "objective",
+        "behaviors",
+        "failure_signals",
+        "repair_actions"
+      ],
+      "properties": {
+        "ja": {
+          "type": "string"
+        },
+        "objective": {
+          "type": "string"
+        },
+        "behaviors": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "failure_signals": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "repair_actions": {
+          "$ref": "#/$defs/stringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "axis": {
+      "type": "object",
+      "required": [
+        "ja",
+        "traits",
+        "benefits",
+        "risks"
+      ],
+      "properties": {
+        "ja": {
+          "type": "string"
+        },
+        "traits": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "benefits": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "risks": {
+          "$ref": "#/$defs/stringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "phase": {
+      "type": "object",
+      "required": [
+        "ja",
+        "role",
+        "purpose",
+        "suitable_for",
+        "output_style"
+      ],
+      "properties": {
+        "ja": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "suitable_for": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "output_style": {
+          "$ref": "#/$defs/stringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "taskBlock": {
+      "type": "object",
+      "required": [
+        "tasks"
+      ],
+      "properties": {
+        "tasks": {
+          "$ref": "#/$defs/stringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "check": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "question"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "profile": {
+      "type": "object",
+      "required": [
+        "primary_phase",
+        "yin_yang_target",
+        "emphasis"
+      ],
+      "properties": {
+        "primary_phase": {
+          "type": "string",
+          "enum": [
+            "wood",
+            "fire",
+            "earth",
+            "metal",
+            "water"
+          ]
+        },
+        "secondary_phase": {
+          "type": "string",
+          "enum": [
+            "wood",
+            "fire",
+            "earth",
+            "metal",
+            "water"
+          ]
+        },
+        "yin_yang_target": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "emphasis": {
+          "$ref": "#/$defs/stringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "selectionRule": {
+      "type": "object",
+      "required": [
+        "condition",
+        "select"
+      ],
+      "properties": {
+        "condition": {
+          "type": "string"
+        },
+        "select": {
+          "type": "string",
+          "enum": [
+            "wood",
+            "fire",
+            "earth",
+            "metal",
+            "water"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "sequence": {
+      "type": "object",
+      "required": [
+        "name",
+        "flow"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "flow": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "wood",
+              "fire",
+              "earth",
+              "metal",
+              "water"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "spec": {
+      "type": "object",
+      "required": [
+        "name",
+        "id",
+        "version",
+        "status",
+        "type",
+        "language",
+        "description"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "essence",
+        "mission",
+        "non_goals"
+      ],
+      "properties": {
+        "essence": {
+          "type": "string"
+        },
+        "mission": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "non_goals": {
+          "$ref": "#/$defs/stringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "design_principles": {
+      "type": "object",
+      "required": [
+        "minimum_viability",
+        "separability",
+        "auditability",
+        "adaptability",
+        "restraint"
+      ],
+      "properties": {
+        "minimum_viability": {
+          "$ref": "#/$defs/statementObject"
+        },
+        "separability": {
+          "$ref": "#/$defs/statementObject"
+        },
+        "auditability": {
+          "$ref": "#/$defs/statementObject"
+        },
+        "adaptability": {
+          "$ref": "#/$defs/statementObject"
+        },
+        "restraint": {
+          "$ref": "#/$defs/statementObject"
+        }
+      },
+      "additionalProperties": false
+    },
+    "architecture": {
+      "type": "object",
+      "required": [
+        "layers",
+        "runtime_order"
+      ],
+      "properties": {
+        "layers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/layer"
+          },
+          "minItems": 3
+        },
+        "runtime_order": {
+          "$ref": "#/$defs/stringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "manjusri_kernel": {
+      "type": "object",
+      "required": [
+        "description",
+        "virtues",
+        "audit_policy"
+      ],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "virtues": {
+          "type": "object",
+          "required": [
+            "clarity",
+            "sincerity",
+            "compassion",
+            "humility",
+            "harmony"
+          ],
+          "properties": {
+            "clarity": {
+              "$ref": "#/$defs/virtue"
+            },
+            "sincerity": {
+              "$ref": "#/$defs/virtue"
+            },
+            "compassion": {
+              "$ref": "#/$defs/virtue"
+            },
+            "humility": {
+              "$ref": "#/$defs/virtue"
+            },
+            "harmony": {
+              "$ref": "#/$defs/virtue"
+            }
+          },
+          "additionalProperties": false
+        },
+        "audit_policy": {
+          "type": "object",
+          "required": [
+            "mode",
+            "required_pass_count",
+            "rule",
+            "violation_levels",
+            "high_severity_examples"
+          ],
+          "properties": {
+            "mode": {
+              "type": "string"
+            },
+            "required_pass_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "rule": {
+              "type": "string"
+            },
+            "violation_levels": {
+              "type": "object",
+              "required": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "properties": {
+                "low": {
+                  "type": "string"
+                },
+                "medium": {
+                  "type": "string"
+                },
+                "high": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            },
+            "high_severity_examples": {
+              "$ref": "#/$defs/stringArray"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "yin_yang_balance": {
+      "type": "object",
+      "required": [
+        "description",
+        "axes",
+        "target_state",
+        "scoring",
+        "defaults",
+        "correction_policy"
+      ],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "axes": {
+          "type": "object",
+          "required": [
+            "yang",
+            "yin"
+          ],
+          "properties": {
+            "yang": {
+              "$ref": "#/$defs/axis"
+            },
+            "yin": {
+              "$ref": "#/$defs/axis"
+            }
+          },
+          "additionalProperties": false
+        },
+        "target_state": {
+          "type": "object",
+          "required": [
+            "mode",
+            "description"
+          ],
+          "properties": {
+            "mode": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "scoring": {
+          "type": "object",
+          "required": [
+            "range",
+            "interpretation"
+          ],
+          "properties": {
+            "range": {
+              "type": "object",
+              "required": [
+                "min",
+                "max"
+              ],
+              "properties": {
+                "min": {
+                  "type": "number"
+                },
+                "max": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": false
+            },
+            "interpretation": {
+              "type": "object",
+              "required": [
+                "-1.0_to_-0.4",
+                "-0.39_to_0.39",
+                "0.4_to_1.0"
+              ],
+              "properties": {
+                "-1.0_to_-0.4": {
+                  "type": "string"
+                },
+                "-0.39_to_0.39": {
+                  "type": "string"
+                },
+                "0.4_to_1.0": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "defaults": {
+          "type": "object",
+          "required": [
+            "advisory",
+            "analytical",
+            "creative",
+            "emotional_support",
+            "strategy"
+          ],
+          "properties": {
+            "advisory": {
+              "type": "number"
+            },
+            "analytical": {
+              "type": "number"
+            },
+            "creative": {
+              "type": "number"
+            },
+            "emotional_support": {
+              "type": "number"
+            },
+            "strategy": {
+              "type": "number"
+            }
+          },
+          "additionalProperties": false
+        },
+        "correction_policy": {
+          "type": "object",
+          "required": [
+            "if_over_yang",
+            "if_over_yin"
+          ],
+          "properties": {
+            "if_over_yang": {
+              "type": "object",
+              "required": [
+                "triggers",
+                "actions"
+              ],
+              "properties": {
+                "triggers": {
+                  "$ref": "#/$defs/stringArray"
+                },
+                "actions": {
+                  "$ref": "#/$defs/stringArray"
+                }
+              },
+              "additionalProperties": false
+            },
+            "if_over_yin": {
+              "type": "object",
+              "required": [
+                "triggers",
+                "actions"
+              ],
+              "properties": {
+                "triggers": {
+                  "$ref": "#/$defs/stringArray"
+                },
+                "actions": {
+                  "$ref": "#/$defs/stringArray"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "five_phase_engine": {
+      "type": "object",
+      "required": [
+        "description",
+        "phases",
+        "selection_policy",
+        "transition_rules"
+      ],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "phases": {
+          "type": "object",
+          "required": [
+            "wood",
+            "fire",
+            "earth",
+            "metal",
+            "water"
+          ],
+          "properties": {
+            "wood": {
+              "$ref": "#/$defs/phase"
+            },
+            "fire": {
+              "$ref": "#/$defs/phase"
+            },
+            "earth": {
+              "$ref": "#/$defs/phase"
+            },
+            "metal": {
+              "$ref": "#/$defs/phase"
+            },
+            "water": {
+              "$ref": "#/$defs/phase"
+            }
+          },
+          "additionalProperties": false
+        },
+        "selection_policy": {
+          "type": "object",
+          "required": [
+            "mode",
+            "rules"
+          ],
+          "properties": {
+            "mode": {
+              "type": "string"
+            },
+            "rules": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/selectionRule"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "transition_rules": {
+          "type": "object",
+          "required": [
+            "description",
+            "common_sequences"
+          ],
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "common_sequences": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/sequence"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "runtime_pipeline": {
+      "type": "object",
+      "required": [
+        "input_analysis",
+        "phase_selection",
+        "draft_generation",
+        "yin_yang_correction",
+        "kernel_audit",
+        "final_output"
+      ],
+      "properties": {
+        "input_analysis": {
+          "$ref": "#/$defs/taskBlock"
+        },
+        "phase_selection": {
+          "$ref": "#/$defs/taskBlock"
+        },
+        "draft_generation": {
+          "$ref": "#/$defs/taskBlock"
+        },
+        "yin_yang_correction": {
+          "$ref": "#/$defs/taskBlock"
+        },
+        "kernel_audit": {
+          "$ref": "#/$defs/taskBlock"
+        },
+        "final_output": {
+          "$ref": "#/$defs/taskBlock"
+        }
+      },
+      "additionalProperties": false
+    },
+    "output_contract": {
+      "type": "object",
+      "required": [
+        "mandatory_properties",
+        "preferred_properties"
+      ],
+      "properties": {
+        "mandatory_properties": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "preferred_properties": {
+          "$ref": "#/$defs/stringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "response_profiles": {
+      "type": "object",
+      "required": [
+        "default",
+        "strategic",
+        "contemplative",
+        "creative",
+        "editorial"
+      ],
+      "properties": {
+        "default": {
+          "$ref": "#/$defs/profile"
+        },
+        "strategic": {
+          "$ref": "#/$defs/profile"
+        },
+        "contemplative": {
+          "$ref": "#/$defs/profile"
+        },
+        "creative": {
+          "$ref": "#/$defs/profile"
+        },
+        "editorial": {
+          "$ref": "#/$defs/profile"
+        }
+      },
+      "additionalProperties": false
+    },
+    "safety_and_restraint": {
+      "type": "object",
+      "required": [
+        "principles",
+        "refusal_conditions",
+        "fallback_behavior"
+      ],
+      "properties": {
+        "principles": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "refusal_conditions": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "fallback_behavior": {
+          "$ref": "#/$defs/stringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "state_model": {
+      "type": "object",
+      "required": [
+        "minimal_runtime_state"
+      ],
+      "properties": {
+        "minimal_runtime_state": {
+          "type": "object",
+          "required": [
+            "current_phase",
+            "yin_yang_score",
+            "active_virtues",
+            "last_audit"
+          ],
+          "properties": {
+            "current_phase": {
+              "type": "string",
+              "enum": [
+                "wood",
+                "fire",
+                "earth",
+                "metal",
+                "water"
+              ]
+            },
+            "yin_yang_score": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1
+            },
+            "active_virtues": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "last_audit": {
+              "type": "object",
+              "required": [
+                "passed",
+                "violations"
+              ],
+              "properties": {
+                "passed": {
+                  "type": "boolean"
+                },
+                "violations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "evaluation": {
+      "type": "object",
+      "required": [
+        "kernel_checks",
+        "balance_checks",
+        "phase_checks"
+      ],
+      "properties": {
+        "kernel_checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/check"
+          }
+        },
+        "balance_checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/check"
+          }
+        },
+        "phase_checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/check"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "extensions": {
+      "type": "object",
+      "required": [
+        "planned_future_layers",
+        "compatibility"
+      ],
+      "properties": {
+        "planned_future_layers": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "compatibility": {
+          "type": "object",
+          "required": [
+            "manjusri_os_full",
+            "kazene_royalty_os",
+            "custom_gpt_persona",
+            "agent_architecture"
+          ],
+          "properties": {
+            "manjusri_os_full": {
+              "type": "boolean"
+            },
+            "kazene_royalty_os": {
+              "type": "boolean"
+            },
+            "custom_gpt_persona": {
+              "type": "boolean"
+            },
+            "agent_architecture": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "example_execution": {
+      "type": "object",
+      "required": [
+        "case",
+        "input_profile",
+        "selected_phase",
+        "yin_yang_target",
+        "audit_priority"
+      ],
+      "properties": {
+        "case": {
+          "type": "string"
+        },
+        "input_profile": {
+          "type": "object",
+          "required": [
+            "intent",
+            "emotional_temperature",
+            "complexity"
+          ],
+          "properties": {
+            "intent": {
+              "type": "string"
+            },
+            "emotional_temperature": {
+              "type": "string"
+            },
+            "complexity": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "selected_phase": {
+          "type": "object",
+          "required": [
+            "primary",
+            "secondary"
+          ],
+          "properties": {
+            "primary": {
+              "type": "string",
+              "enum": [
+                "wood",
+                "fire",
+                "earth",
+                "metal",
+                "water"
+              ]
+            },
+            "secondary": {
+              "type": "string",
+              "enum": [
+                "wood",
+                "fire",
+                "earth",
+                "metal",
+                "water"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "yin_yang_target": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "audit_priority": {
+          "$ref": "#/$defs/stringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "implementation_hint": {
+      "type": "object",
+      "required": [
+        "minimal_prompt_logic"
+      ],
+      "properties": {
+        "minimal_prompt_logic": {
+          "$ref": "#/$defs/stringArray"
+        }
+      },
+      "additionalProperties": false
+    },
+    "closing_definition": {
+      "type": "object",
+      "required": [
+        "statement"
+      ],
+      "properties": {
+        "statement": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
